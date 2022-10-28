@@ -1,0 +1,18 @@
+FROM node:16.15.0-alpine3.15
+
+LABEL maintainer="dp_bell@kakao.com"
+LABEL version="1.0.0"
+LABEL date="2022.10.28"
+LABEL description="docker test"
+
+RUN mkdir -p /front
+WORKDIR /front
+
+COPY ./front /front
+
+RUN yarn build
+
+ENV PORT 3000
+EXPOSE 3000
+
+

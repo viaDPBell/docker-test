@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+    front:
+        container_name: front_test
+        command: yarn start
+        build:
+            context: ./
+            dockerfile: Dockerfile_dev
+        ports:
+            - 3000:3000
+        expose:
+            - 3000
+        restart: always
+        environment:
+            - NODE_ENV=development
+            - REACT_APP_ENV_TEST="ENV TEST 출력용입니다."
+
+        volumes:
+            - ./front:/front
+            - /front/build
+            - /front/node_modules
